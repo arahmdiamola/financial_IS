@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrganizationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +30,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/check_limit/{id}', [OrganizationController::class, 'check_limit'])->middleware(['auth']);
+
+Route::resource('expense', ExpenseController::class)->middleware(['auth']);
+Route::resource('users', UserController::class)->middleware(['auth']);
 
 require __DIR__.'/auth.php';

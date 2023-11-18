@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'organization',
+        'designation',
+        'role'
     ];
 
     /**
@@ -42,4 +45,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function getOrg() {
+        return $this->hasOne('\App\Models\organization', 'id', 'organization');
+    }
+
+    public function getRole() {
+        return $this->hasOne('\App\Models\role', 'id', 'role');
+    }
 }
