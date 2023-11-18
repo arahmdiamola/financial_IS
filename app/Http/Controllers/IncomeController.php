@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\Models\Income;
 use App\Http\Requests\StoreIncomeRequest;
 use App\Http\Requests\UpdateIncomeRequest;
@@ -13,7 +13,10 @@ class IncomeController extends Controller
      */
     public function index()
     {
-        //
+        $users = \App\Models\User::where('organization', Auth::user()->organization)->pluck('id');
+
+        $incomes = income::where('user', $users)->get();
+        return view('income')->with(compact('incomes'));
     }
 
     /**
@@ -29,7 +32,16 @@ class IncomeController extends Controller
      */
     public function store(StoreIncomeRequest $request)
     {
-        //
+        dd($request->all());
+        $income = new income;
+        $income->name = $request->name;
+        $income->account = $request->account;
+        $income->amount = $request->amount;
+        $income->category = $request->category;
+        $income->income_date = $request->date;
+        $income->user = Auth::user()->id;
+        $income->save();
+        return redirect('/income');
     }
 
     /**

@@ -3,10 +3,10 @@
     <x-slot name="body_container">
         <div class="page-wrapper">
             <div class="page-content">
-                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addExpenseModal">Add Expense</button>
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addincomeModal">Add income</button>
                 <div class="row mt-5">
                     <div class="col-md-8">
-                        <table id="expenses" class="display">
+                        <table id="incomes" class="display">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -16,11 +16,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($expenses as $expense)
+                                @foreach($incomes as $income)
                                 <tr>
-                                    <td> {{$expense->name}} </td>
-                                    <td> {{$expense->date}} </td>
-                                    <td> {{$expense->amount}} </td>
+                                    <td> {{$income->name}} </td>
+                                    <td> {{$income->date}} </td>
+                                    <td> {{$income->amount}} </td>
                                     <td> 
                                         <div class="card-body">
                                             <div class="row row-cols-auto g-3">
@@ -69,21 +69,21 @@
             </div>
         </div>
 
-        <div class="modal" id="addExpenseModal" tabindex="-1" role="dialog">
+        <div class="modal" id="addincomeModal" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document">
-            <form action="{{ route('expense.store') }}" method="POST">
+            <form action="{{ route('income.store') }}" method="POST">
                 @csrf
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">Record Expense</h5>
+                <h5 class="modal-title">Record income</h5>
                 <button type="button" class="btn btn-default btn-sm close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Expense Name</label>
-                    <input type="text" class="form-control" id="name" name="name" aria-describedby="" placeholder="Enter expense name">
+                    <label for="exampleInputEmail1">income Name</label>
+                    <input type="text" class="form-control" id="name" name="name" aria-describedby="" placeholder="Enter income name">
                   </div>
                   <div class="form-group mt-3">
                     <label for="exampleInputEmail1">Amount</label>
@@ -102,7 +102,7 @@
                     <label for="exampleInputEmail1">Category</label>
                     <select class="form-control" name="category">
                         <option value="">Select Account</option>
-                        @foreach(\App\Models\Categories::where('type', 1)->get() as $k => $cat)
+                        @foreach(\App\Models\Categories::where('type', 2)->get() as $k => $cat)
                             <option value="{{$cat->id}}">{{$cat->name}}</option>
                         @endforeach
                     </select>
@@ -132,7 +132,7 @@
         <script type="text/javascript">
 
 
-            let table = new DataTable('#expenses');
+            let table = new DataTable('#incomes');
         </script>
 
         <script type="text/javascript">

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->double('balance');
             $table->integer('user');
+            $table->string('name');
             $table->string('status');
             $table->string('type');
             $table->timestamps();

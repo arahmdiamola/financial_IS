@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrganizationController;
@@ -33,6 +34,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/check_limit/{id}', [OrganizationController::class, 'check_limit'])->middleware(['auth']);
 
+Route::resource('income', IncomeController::class)->middleware(['auth']);
 Route::resource('expense', ExpenseController::class)->middleware(['auth']);
 Route::resource('users', UserController::class)->middleware(['auth']);
 
