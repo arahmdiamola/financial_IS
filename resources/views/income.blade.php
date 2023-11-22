@@ -10,7 +10,7 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Date</th>
+                                    <th>Income Date</th>
                                     <th>Amount</th>
                                     <th>Actions</th>
                                 </tr>
@@ -18,8 +18,8 @@
                             <tbody>
                                 @foreach($incomes as $income)
                                 <tr>
-                                    <td> {{$income->name}} </td>
-                                    <td> {{$income->date}} </td>
+                                    <td> {{strtoupper($income->name)}} </td>
+                                    <td> {{$income->income_date}} </td>
                                     <td> {{$income->amount}} </td>
                                     <td> 
                                         <div class="card-body">
@@ -102,7 +102,7 @@
                     <label for="exampleInputEmail1">Category</label>
                     <select class="form-control" name="category">
                         <option value="">Select Account</option>
-                        @foreach(\App\Models\Categories::where('type', 2)->get() as $k => $cat)
+                        @foreach(\App\Models\Categories::where('type', 'income')->get() as $k => $cat)
                             <option value="{{$cat->id}}">{{$cat->name}}</option>
                         @endforeach
                     </select>

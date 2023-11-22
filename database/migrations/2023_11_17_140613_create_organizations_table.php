@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('organizations', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('user_limit');
+            $table->string('name')->nullable();
+            $table->integer('user_limit')->nullable();
+            $table->double('spend_monthly')->nullable();
+            $table->double('save_monthly')->nullable();
+            $table->double('save_yearly')->nullable();
             $table->timestamps();
+
         });
     }
 

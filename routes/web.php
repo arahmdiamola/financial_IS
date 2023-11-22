@@ -6,6 +6,7 @@ use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrganizationController;
+use App\Http\Controllers\BudgetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -37,5 +39,6 @@ Route::get('/check_limit/{id}', [OrganizationController::class, 'check_limit'])-
 Route::resource('income', IncomeController::class)->middleware(['auth']);
 Route::resource('expense', ExpenseController::class)->middleware(['auth']);
 Route::resource('users', UserController::class)->middleware(['auth']);
+Route::resource('budget', BudgetController::class)->middleware(['auth']);
 
 require __DIR__.'/auth.php';

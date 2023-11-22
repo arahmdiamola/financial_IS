@@ -14,6 +14,8 @@
                             <div class="card-body">
                                 <div class="jumbotron">
                                     <?php
+
+                                    // dd(Auth::user()->getOrg->toArray());
                                         $users = \App\Models\User::where('organization', Auth::user()->organization)->pluck('id');
                                         $base_income = \App\Models\income::where('organization', Auth::user()->organization);
                                         $income = $base_income->sum('amount');
@@ -78,8 +80,43 @@
                     </div>
                 </div>
                     </div>
-                    
+                </div>
 
+                <div class="">
+                    <div class="">
+                        <div class="container py-2">
+                            <h2 class="font-weight-light text-center text-muted py-3">Logs</h2>
+              
+                            <!-- timeline item 2 -->
+                            @foreach( Spatie\Activitylog\Models\Activity::all() as $k => $activity  )
+                            <div class="row">
+                                <div class="col-auto text-center flex-column d-none d-sm-flex">
+                                    <div class="row h-50">
+                                        <div class="col border-end">&nbsp;</div>
+                                        <div class="col">&nbsp;</div>
+                                    </div>
+                                    <h5 class="m-2">
+                                    <span class="badge rounded-pill bg-light border">&nbsp;</span>
+                                </h5>
+                                    <div class="row h-50">
+                                        <div class="col border-end">&nbsp;</div>
+                                        <div class="col">&nbsp;</div>
+                                    </div>
+                                </div>
+                                <div class="col py-2">
+                                    <div class="card border-primary shadow radius-15">
+                                        <div class="card-body">
+                                            <div class="float-end text-primary">{{$activity->created_at->diffforhumans()}}</div>
+                                            <h4 class="card-title text-primary">{{$activity->causer->name}}</h4>
+                                            <p class="card-text">{{$activity->description}}</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

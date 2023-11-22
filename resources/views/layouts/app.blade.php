@@ -15,6 +15,10 @@
     <link href="/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
     <link href="/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
     <link href="/assets/plugins/highcharts/css/highcharts.css" rel="stylesheet" />
+
+    <link href="assets/plugins/bs-stepper/css/bs-stepper.css" rel="stylesheet" />
+
+
     <!-- loader-->
     <link href="/assets/css/pace.min.css" rel="stylesheet" />
     <script src="/assets/js/pace.min.js"></script>
@@ -31,6 +35,18 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" />
 
     <title>Syndron - Bootstrap 5 Admin Dashboard Template</title>
+    <style type="text/css">
+        * {
+          margin: 0;
+          padding: 0;
+        }
+        #chart-container {
+          position: relative;
+          height: 35vh;
+          overflow: hidden;
+        }
+
+    </style>
 </head>
 
 <body>

@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('incomes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('user');
-            $table->double('amount');
-            $table->integer('organization');
-            $table->integer('category');
-            $table->date('income_date');
+            $table->string('name')->nullable();
+            $table->integer('user')->nullable();
+            $table->integer('account')->nullable();
+            $table->double('amount')->nullable();
+            $table->integer('organization')->nullable();
+            $table->integer('category')->nullable();
+            $table->date('income_date')->nullable();
             $table->timestamps();
         });
     }

@@ -32,11 +32,11 @@ class IncomeController extends Controller
      */
     public function store(StoreIncomeRequest $request)
     {
-        dd($request->all());
         $income = new income;
         $income->name = $request->name;
         $income->account = $request->account;
         $income->amount = $request->amount;
+        $income->organization = Auth::user()->organization;
         $income->category = $request->category;
         $income->income_date = $request->date;
         $income->user = Auth::user()->id;

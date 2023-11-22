@@ -18,8 +18,8 @@
                             <tbody>
                                 @foreach($expenses as $expense)
                                 <tr>
-                                    <td> {{$expense->name}} </td>
-                                    <td> {{$expense->date}} </td>
+                                    <td> {{strtoupper($expense->name)}} </td>
+                                    <td> {{$expense->expense_date}} </td>
                                     <td> {{$expense->amount}} </td>
                                     <td> 
                                         <div class="card-body">
@@ -102,7 +102,7 @@
                     <label for="exampleInputEmail1">Category</label>
                     <select class="form-control" name="category">
                         <option value="">Select Account</option>
-                        @foreach(\App\Models\Categories::where('type', 1)->get() as $k => $cat)
+                        @foreach(\App\Models\Categories::where('type', 'expense')->get() as $k => $cat)
                             <option value="{{$cat->id}}">{{$cat->name}}</option>
                         @endforeach
                     </select>
